@@ -1,5 +1,5 @@
 class Cell{
-    constructor(i, j){
+    constructor(i, j, rows, cols){
         this.i=i;
         this.j=j;
         this.visited = false;
