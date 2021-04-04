@@ -9,6 +9,7 @@ import { animateBubbleSort } from "./animations/bubblesort_animations";
 import { animateSelectionSort } from "./animations/selectionsort_animations";
 import { animateQuickSort } from "./animations/quicksort_animations";
 import { animateInsertionSort } from "./animations/insertionsort_animations";
+import BackButton from '../../utility_components/BackButton';
 
 class Menu extends React.Component{
 
@@ -41,11 +42,16 @@ class Menu extends React.Component{
         animateQuickSort(animations);
       };
 
+      onBackButtonClick = () => {
+        this.props.onBackButtonClick();
+      }
+      
     render(){
         return (
             <div>
             <div>
           <button onClick={this.generateNewArray}>Generate Array</button>
+          <BackButton onBackButtonClick={this.onBackButtonClick}/>
         </div>
         <button onClick={this.mergesort}>MergeSort</button>
         <button onClick={this.bubblesort}>BubbleSort</button>

@@ -6,7 +6,7 @@ export function getMergeSortAnimations(array){
 }
 
 function mergesort(array, start, end, auxArray, animations){
-  if(start == end)
+  if(start === end)
     return;
   const mid = Math.floor((start + end)/2);
   mergesort(auxArray, start, mid, array, animations);

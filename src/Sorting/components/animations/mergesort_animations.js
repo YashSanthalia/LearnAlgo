@@ -10,8 +10,6 @@ export function animateMergeSort(animations){
             const [barOneIdx, barTwoIdx] = animations[i];
             const barOneStyle = arrayBars[barOneIdx].style;
             const barTwoStyle = arrayBars[barTwoIdx].style;
-            console.log(barOneStyle);
-            console.log(barTwoStyle);
             const color = i % 3 === 0 ? SECONDARY_COLOR : PRIMARY_COLOR;
             setTimeout(() => {
               barOneStyle.backgroundColor = color;
