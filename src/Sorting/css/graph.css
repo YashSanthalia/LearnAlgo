@@ -2,11 +2,14 @@
     align-items: center;
     justify-content: center;
     position: absolute;
+    top:25%;
+    left: 5%;
+    right : 5%
 }
 
 .array-bar{
     width: 5px;
     display: inline-block;
-    background-color: blue;
-    margin: 0 2px;
+    margin:20px 1px;
+    border-style: solid;
 }

@@ -11,7 +11,7 @@ class Sorting extends React.Component {
 
   resetArray = () => {
     const array = [];
-    for (let i = 0; i < 50; i++) {
+    for (let i = 0; i < 100; i++) {
       array.push(Math.floor(Math.random() * 300) + 20);
     }
     this.setState({ array });

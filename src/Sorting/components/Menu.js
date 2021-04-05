@@ -10,6 +10,7 @@ import { animateSelectionSort } from "./animations/selectionsort_animations";
 import { animateQuickSort } from "./animations/quicksort_animations";
 import { animateInsertionSort } from "./animations/insertionsort_animations";
 import BackButton from '../../utility_components/BackButton';
+import "../css/button.css";
 
 class Menu extends React.Component{
 
@@ -48,17 +49,17 @@ class Menu extends React.Component{
       
     render(){
         return (
-            <div>
-            <div>
-          <button onClick={this.generateNewArray}>Generate Array</button>
-          <BackButton onBackButtonClick={this.onBackButtonClick}/>
-        </div>
-        <button onClick={this.mergesort}>MergeSort</button>
-        <button onClick={this.bubblesort}>BubbleSort</button>
-        <button onClick={this.selectionsort}>SelectionSort</button>
-        <button onClick={this.insertionsort}>InsertionSort</button>
-        <button onClick={this.quicksort}>QuickSort</button>
-        </div>
+          <div>
+            <div class="a">
+              <button onClick={this.generateNewArray}>Generate Array</button>
+              <BackButton onBackButtonClick={this.onBackButtonClick}/>
+            </div>
+            <button class="b" onClick={this.mergesort}>MergeSort</button>
+            <button class="c" onClick={this.bubblesort}>BubbleSort</button>
+            <button class="d" onClick={this.selectionsort}>SelectionSort</button>
+            <button class="e" onClick={this.insertionsort}>InsertionSort</button>
+            <button class="f" onClick={this.quicksort}>QuickSort</button>
+          </div>
         );
     }
 }
