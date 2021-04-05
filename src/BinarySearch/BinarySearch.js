@@ -5,7 +5,7 @@ import NavBar from "../LinearSearch/NavBar";
 let array = [];
 let n;
 let side = 50;
-let key;
+let key = null;
 let found = false;
 let reLoad = false;
 let lo, hi, mid;
@@ -62,7 +62,7 @@ class BinarySearch extends React.Component {
       }
       if (key) {
         mid = Math.floor((lo + hi) / 2);
-        if (array[mid] === key) {
+        if (array[mid] == key) {
           found = true;
           p5.fill(255, 0, 0);
           p5.rect(mid * side, 0, side, side);
@@ -75,6 +75,22 @@ class BinarySearch extends React.Component {
           lo = mid + 1;
         }
       }
+    }
+    else if(!found){
+      console.log("Not Found");
+      for (let i = 0; i < n; i++) {
+        if (i >= lo && i <= hi) {
+          p5.fill(0, 255, 0);
+        } else{
+          p5.fill(255);
+        }
+        p5.stroke(0);
+        p5.rect(i * side, 0, side, side);
+        p5.fill(0);
+        p5.textSize(15);
+        p5.text(array[i], i * side + (9 * side) / 24, (7 * side) / 12);
+      }
+      found = true;
     }
   };
 
@@ -95,13 +111,21 @@ class BinarySearch extends React.Component {
     this.setState({ key: null, stage: 0 });
   };
 
-  mousePressed = (e) => {
-    let x = e.mouseX;
-    let y = e.mouseY;
-    let i = Math.floor(x / side);
-    let j = Math.floor(y / side);
-    if (!key && i >= 0 && i < n && j == 0) {
-      this.setState({ key: array[i], stage: 1 });
+  // mousePressed = (e) => {
+  //   let x = e.mouseX;
+  //   let y = e.mouseY;
+  //   let i = Math.floor(x / side);
+  //   let j = Math.floor(y / side);
+  //   if (!key && i >= 0 && i < n && j == 0) {
+  //     this.setState({ key: array[i], stage: 1 });
+  //   }
+  // };
+
+  onSearchButtonClick = () => {
+    let n = document.getElementById("key").value;
+    console.log(n);
+    if(this.state.key === null){
+      this.setState({key : n, stage : 1});
     }
   };
 
@@ -112,6 +136,7 @@ class BinarySearch extends React.Component {
           stage={this.state.stage}
           onBackButtonClick={this.onBackButtonClick}
           onClearButtonClick={this.onClearButtonClick}
+          onSearchButtonClick = {this.onSearchButtonClick}
         />
         <Sketch
           setup={this.setup}

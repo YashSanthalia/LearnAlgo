@@ -10,7 +10,7 @@ class Cell{
         this.neighbours = [];
         this.prev = undefined;
         this.wall = false;
-        if(Math.random(1) < 0.3)
+        if(Math.random(1) < 0.5)
             this.wall = true;
     }
     addNeighbours(){

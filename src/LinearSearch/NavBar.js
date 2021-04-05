@@ -1,6 +1,7 @@
 import React from "react";
 import BackButton from "../utility_components/BackButton";
 import ClearButton from "../utility_components/ClearButton";
+import SearchButton from "../utility_components/SearchButton";
 
 
 class NavBar extends React.Component {
@@ -13,13 +14,19 @@ class NavBar extends React.Component {
     this.props.onClearButtonClick();
   }
 
+  onSearchButtonClick = () => {
+    this.props.onSearchButtonClick();
+  }
+
   render() {
     if (this.props.stage === 0) {
       return (
         <div>
           <BackButton onBackButtonClick={this.onBackButtonClick}/>
           <ClearButton onClearButtonClick={this.onClearButtonClick}/>
-          Click the element you want to search
+          <input id="key"></input>
+          <SearchButton onSearchButtonClick={this.onSearchButtonClick} />
+          Enter the element you want to search
         </div>
       );
     }

@@ -106,7 +106,7 @@ class Dijkstra extends React.Component {
               }
             }
           }
-        } else {
+        } else if(!solution) {
           noSolution = true;
         }
       }
@@ -185,6 +185,10 @@ class Dijkstra extends React.Component {
         }
         p5.rect(x, y, side, side);
       }
+    }
+
+    else if(noSolution){
+      console.log("NO solution");
     }
   };
 

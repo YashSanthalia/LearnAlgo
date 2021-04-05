@@ -109,7 +109,7 @@ class AStar extends React.Component {
               }
             }
           }
-        } else {
+        } else if(!solution){
           noSolution = true;
         }
       }
@@ -189,6 +189,11 @@ class AStar extends React.Component {
         p5.rect(x, y, side, side);
       }
     }
+
+    if(noSolution){
+      console.log("No Solution");
+    }
+
   };
 
   mousePressed = (e) => {
