@@ -3,6 +3,7 @@ import SortingVisualizer from "./components/SortingVisualizer";
 import "./css/app.css";
 
 class Sorting extends React.Component {
+  
   state = { array: [] };
 
   componentDidMount() {
@@ -16,9 +17,11 @@ class Sorting extends React.Component {
     }
     this.setState({ array });
   };
+
   onBackButtonClick = () => {
     this.props.onBackButtonClick();
   };
+
   render() {
     return (
       <div className="ui container">

@@ -5,6 +5,7 @@ import AStar from "./AStar/AStar";
 import Sorting from "./Sorting/Sorting";
 import LinearSearch from "./LinearSearch/LinearSearch";
 import BinarySearch from "./BinarySearch/BinarySearch";
+import TSP from "./TSP/TSP";
 
 class App extends React.Component {
   state = { option: 0 };
@@ -59,6 +60,13 @@ class App extends React.Component {
           >
             BinarySearch
           </button>
+          <button
+            onClick={() => {
+              this.setState({ option: 7 });
+            }}
+          >
+            TSP
+          </button>
         </div>
       );
     } else if (this.state.option === 1) {
@@ -73,7 +81,10 @@ class App extends React.Component {
       return <LinearSearch onBackButtonClick={this.onBackButtonClick} />;
     }else if (this.state.option === 6) {
       return <BinarySearch onBackButtonClick={this.onBackButtonClick} />;
+    }else if (this.state.option === 7) {
+      return <TSP onBackButtonClick={this.onBackButtonClick} />;
     }
+
 
   }
 }
