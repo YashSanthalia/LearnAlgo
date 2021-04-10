@@ -22,7 +22,7 @@ class Menu extends React.Component{
         const animations = getMergeSortAnimations(this.props.array);
         animateMergeSort(animations);
       };
-    
+
       bubblesort = () => {
         const animations = getBubbleSortAnimations(this.props.array);
         animateBubbleSort(animations);

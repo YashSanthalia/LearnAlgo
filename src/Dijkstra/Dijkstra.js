@@ -1,13 +1,13 @@
 import React from "react";
 import Sketch from "react-p5";
-import Cell from "../AStar/Cell";
-import NavBar from "../AStar/components/NavBar";
+import Cell from "../astar/Cell";
+import NavBar from "../astar/components/NavBar";
 import {
   showingCompleteGrid,
   showingOpenSet,
   showingclosedSet,
   showingPath,
-} from "../AStar/Draw";
+} from "../astar/Draw";
 
 let cols = 28,
   rows = 14;

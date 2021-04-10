@@ -1,11 +1,11 @@
 import React from "react";
-import Dijkstra from "./Dijkstra/Dijkstra";
-import BackTracking from "./BackTracking/BackTracking";
-import AStar from "./AStar/AStar";
-import Sorting from "./Sorting/Sorting";
-import LinearSearch from "./LinearSearch/LinearSearch";
-import BinarySearch from "./BinarySearch/BinarySearch";
-import TSP from "./TSP/TSP";
+import Dijkstra from "./dijkstra/Dijkstra";
+import BackTracking from "./backtracking/BackTracking";
+import AStar from "./astar/AStar";
+import Sorting from "./sorting/Sorting";
+import LinearSearch from "./linearsearch/LinearSearch";
+import BinarySearch from "./binarysearch/BinarySearch";
+import TSP from "./tsp/TSP";
 
 class App extends React.Component {
   state = { option: 0 };

@@ -1,6 +1,6 @@
 import React from "react";
 import Sketch from "react-p5";
-import NavBar from "../LinearSearch/NavBar";
+import NavBar from "../linearsearch/NavBar";
 
 let array = [];
 let n = 30;
