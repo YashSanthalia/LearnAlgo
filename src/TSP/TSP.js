@@ -8,8 +8,8 @@ import {getCurrentBest} from "./GeneticAlgo";
 import {nextGeneration} from "./GeneticAlgo";
 
 let points = [];
-const width = 1000;
-const height = 500;
+let width;
+let height;
 let bestFitness = -1;
 let bestPath = [];
 let order = [];
@@ -18,6 +18,7 @@ let flag = false;
 let population = [];
 let fitness = [];
 let populationSize = 1000;
+let xyz;
 
 
 
@@ -29,11 +30,28 @@ class TSP extends React.Component {
   };
 
   setup = (p5, parent) => {
-    let xyz = p5.createCanvas(width, height).parent(parent);
+    xyz = p5.createCanvas(p5.windowWidth*0.78, p5.windowHeight * 0.85).parent(parent);
+    this.initializeCanvas(p5);
+  };
+
+  windowResized = (p5) => {
+    let prevWidth = p5.width;
+    let prevHeight = p5.height;
+    xyz = p5.createCanvas(p5.windowWidth*0.78, p5.windowHeight * 0.85);
+    this.initializeCanvas(p5);
+    for(let i = 0 ; i < points.length ; i++){
+      points[i].x = (p5.width * points[i].x) / prevWidth;
+      points[i].y = (p5.height * points[i].y) / prevHeight;
+    }
+  }
+
+  initializeCanvas = (p5) => {
+    width = p5.windowWidth*0.78;
+    height = p5.windowHeight * 0.85;
     let x = (p5.windowWidth - p5.width) / 2;
     let y = (p5.windowHeight - p5.height) / 2;
     xyz.position(x, y);
-  };
+  }
 
   draw = (p5) => {
     if (!complete) {
@@ -113,6 +131,7 @@ class TSP extends React.Component {
       let y = e.mouseY;
       if (x > 0 && x < width && y > 0 && y < height) {
         points.push(new Point(x, y));
+        console.log(x, y);
       }
     }
   };
@@ -156,6 +175,7 @@ class TSP extends React.Component {
           setup={this.setup}
           draw={this.draw}
           mousePressed={this.mousePressed}
+          windowResized = {this.windowResized}
         />
       </div>
     );

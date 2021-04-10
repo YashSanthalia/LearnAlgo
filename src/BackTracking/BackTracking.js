@@ -3,8 +3,8 @@ import Cell from "./Cell";
 import Sketch from "react-p5";
 import NavBar from "./components/NavBar";
 
-const side = 25;
-let rows, cols;
+let length, breadth;
+let rows = 14, cols = 30;
 let grid = [];
 let current = null,
   next = null,
@@ -12,87 +12,72 @@ let current = null,
 let stack = [];
 let reLoad = false;
 let solution = false;
+let flag = true;
+let xyz;
 
 class BackTracking extends React.Component {
   state = { start: null, stage: 0 };
 
   componentDidMount() {
     grid = [];
-    for (let j = 0; j < rows; j++) {
-      for (let i = 0; i < cols; i++) {
-        let cell = new Cell(i, j, rows, cols);
-        grid.push(cell);
-      }
-    }
+    this.initializeGrid();
     current = this.state.start;
     start = this.state.start;
   }
 
   componentDidUpdate() {
     if (reLoad) {
-      grid = [];
-      next = null;
-      stack = [];
-      reLoad = false;
-      solution = false;
-      for (let j = 0; j < rows; j++) {
-        for (let i = 0; i < cols; i++) {
-          let cell = new Cell(i, j, rows, cols);
-          grid.push(cell);
-        }
-      }
+      this.cleaning();
+      this.initializeGrid();
     }
     current = this.state.start;
     start = this.state.start;
   }
 
   setup = (p5, canvasParentRef) => {
-    let xyz = p5.createCanvas(1200, 500).parent(canvasParentRef);
+    console.log(1);
+    xyz = p5.createCanvas(p5.windowWidth * 0.95, p5.windowHeight * 0.85).parent(canvasParentRef);
+    p5.frameRate();
+    this.initializeCanvas(p5);
+  };
+
+  windowResized = (p5) => {
+    xyz = p5.createCanvas(p5.windowWidth * 0.85, p5.windowHeight * 0.85);
+    this.initializeCanvas(p5);
+    if(solution){
+      flag = true;
+    }
+  };
+
+  initializeCanvas = (p5) => {
     let x = (p5.windowWidth - p5.width) / 2;
     let y = (p5.windowHeight - p5.height) / 2;
     xyz.position(x, y);
-    p5.frameRate(100);
-    rows = p5.height / side;
-    cols = p5.width / side;
+    length = p5.width / cols;
+    breadth = p5.height / rows;
+  };
+
+  initializeGrid = () => {
+    for (let j = 0; j < rows; j++) {
+      for (let i = 0; i < cols; i++) {
+        let cell = new Cell(i, j, rows, cols);
+        grid.push(cell);
+      }
+    }
   };
 
   draw = (p5) => {
+    if(flag === true){
+      this.showGrid(p5);
+    }
     if (!solution) {
-      p5.background(2);
-      for (let i = 0; i < grid.length; i++) {
-        let x = grid[i].i;
-        let y = grid[i].j;
-        x = x * side;
-        y = y * side;
-        p5.stroke(255);
-        p5.noFill();
-        if (grid[i].walls[0]) {
-          p5.line(x, y, x + side, y);
-        }
-        if (grid[i].walls[1]) {
-          p5.line(x + side, y, x + side, y + side);
-        }
-        if (grid[i].walls[2]) {
-          p5.line(x + side, y + side, x, y + side);
-        }
-        if (grid[i].walls[3]) {
-          p5.line(x, y + side, x, y);
-        }
-        if (start === grid[i]) {
-          p5.noStroke();
-          p5.fill(255, 0, 0);
-          p5.rect(x, y, side, side);
-        } else if (grid[i].visited) {
-          p5.noStroke();
-          p5.fill(46, 240, 113);
-          p5.rect(x, y, side, side);
-        }
-      }
+      p5.background(0);
+      this.showGrid(p5);
       if (current) {
         current.visited = true;
         p5.noStroke();
         p5.fill(21, 42, 233);
-        p5.rect(current.i * side, current.j * side, side, side);
+        p5.rect(current.i * length, current.j * breadth, length, breadth);
         next = this.checkNeighbours();
         if (next) {
           stack.push(current);
@@ -107,11 +92,44 @@ class BackTracking extends React.Component {
     }
   };
 
+  showGrid = (p5) => {
+    for (let i = 0; i < grid.length; i++) {
+      let x = grid[i].i;
+      let y = grid[i].j;
+      x = x * length;
+      y = y * breadth;
+      p5.noFill();
+      p5.stroke(255);
+      p5.strokeWeight(2);
+      if (grid[i].walls[0]) {
+        p5.line(x, y, x + length, y);
+      }
+      if (grid[i].walls[1]) {
+        p5.line(x + length, y, x + length, y + breadth);
+      }
+      if (grid[i].walls[2]) {
+        p5.line(x + length, y + breadth, x, y + breadth);
+      }
+      if (grid[i].walls[3]) {
+        p5.line(x, y + breadth, x, y);
+      }
+      if (start === grid[i]) {
+        p5.noStroke();
+        p5.fill(255, 0, 0);
+        p5.rect(x, y, length, breadth);
+      } else if (grid[i].visited) {
+        p5.noStroke();
+        p5.fill(46, 240, 113);
+        p5.rect(x, y, length+1, breadth+1);
+      }
+    }
+  }
+
   mousePressed = (e) => {
     let x = e.mouseX;
     let y = e.mouseY;
-    let i = Math.floor(x / side);
-    let j = Math.floor(y / side);
+    let i = Math.floor(x / length);
+    let j = Math.floor(y / breadth);
     if (i >= 0 && j >= 0 && i < cols && j < rows) {
       if (!this.state.start)
         this.setState({ start: grid[j * cols + i], stage: 1 });
@@ -159,14 +177,19 @@ class BackTracking extends React.Component {
   };
 
   onBackButtonClick = () => {
+    this.cleaning();
+    this.props.onBackButtonClick();
+  };
+
+  cleaning = () => {
+    grid = [];
     current = null;
     next = null;
     start = null;
     stack = [];
     reLoad = false;
     solution = false;
-    this.props.onBackButtonClick();
-  };
+  }
 
   onClearButtonClick = () => {
     reLoad = true;
@@ -185,6 +208,7 @@ class BackTracking extends React.Component {
           setup={this.setup}
           draw={this.draw}
           mousePressed={this.mousePressed}
+          windowResized={this.windowResized}
         />
       </div>
     );

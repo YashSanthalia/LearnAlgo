@@ -3,15 +3,18 @@ import Sketch from "react-p5";
 import NavBar from "../LinearSearch/NavBar";
 
 let array = [];
-let n;
-let side = 50;
+let n = 30;
+let length, breadth;
 let key = null;
 let found = false;
 let reLoad = false;
 let lo, hi, mid;
+let xyz;
+let flag = false;
 
 class BinarySearch extends React.Component {
   state = { key: null, stage: 0 };
+
   componentDidMount() {
     lo = 0;
     hi = n - 1;
@@ -23,7 +26,6 @@ class BinarySearch extends React.Component {
     if (reLoad) {
       reLoad = false;
       this.resetArray();
-      reLoad = false;
     }
     key = this.state.key;
   }
@@ -37,38 +39,43 @@ class BinarySearch extends React.Component {
   }
 
   setup = (p5, parent) => {
-    let xyz = p5.createCanvas(1000, 50);
+    xyz = p5.createCanvas(p5.windowWidth * 0.95, p5.windowHeight * 0.09).parent(parent);
+    p5.frameRate(5);
+    this.initializeCanvas(p5);
+  };
+
+  windowResized = (p5) => {
+    xyz = p5.createCanvas(p5.windowWidth * 0.95, p5.windowHeight * 0.09);
+    this.initializeCanvas(p5);
+    if(found){
+      flag = true;
+    }
+  };
+
+  initializeCanvas = (p5) => {
     let x = (p5.windowWidth - p5.width) / 2;
     let y = (p5.windowHeight - p5.height) / 2;
     xyz.position(x, y);
-    p5.frameRate(1);
-    n = p5.width / side;
+    length = p5.width / n;
+    breadth = p5.height * 0.9;
   };
 
   draw = (p5) => {
+    if(flag == true){
+      this.showArray(p5);
+    }
     if (!found && lo <= hi) {
       p5.background(255);
-      for (let i = 0; i < n; i++) {
-        if (i >= lo && i <= hi) {
-          p5.fill(0, 255, 0);
-        } else{
-          p5.fill(255);
-        }
-        p5.stroke(0);
-        p5.rect(i * side, 0, side, side);
-        p5.fill(0);
-        p5.textSize(15);
-        p5.text(array[i], i * side + (9 * side) / 24, (7 * side) / 12);
-      }
+      this.showArray(p5);
       if (key) {
         mid = Math.floor((lo + hi) / 2);
         if (array[mid] == key) {
           found = true;
           p5.fill(255, 0, 0);
-          p5.rect(mid * side, 0, side, side);
+          p5.rect(mid * length, 0, length, breadth);
           p5.fill(0);
-          p5.textSize(15);
-          p5.text(array[mid], mid * side + (9 * side) / 24, (7 * side) / 12);
+          p5.textSize((length + breadth) / 6);
+          p5.text(array[mid], mid * length + (9 * length) / 24, (7 * breadth) / 12);
         } else if (array[mid] > key) {
           hi = mid - 1;
         } else if (array[mid] < key) {
@@ -78,48 +85,45 @@ class BinarySearch extends React.Component {
     }
     else if(!found){
       console.log("Not Found");
-      for (let i = 0; i < n; i++) {
-        if (i >= lo && i <= hi) {
-          p5.fill(0, 255, 0);
-        } else{
-          p5.fill(255);
-        }
-        p5.stroke(0);
-        p5.rect(i * side, 0, side, side);
-        p5.fill(0);
-        p5.textSize(15);
-        p5.text(array[i], i * side + (9 * side) / 24, (7 * side) / 12);
+      this.showArray(p5);
+    }
+  };
+
+  showArray = (p5) => {
+    for (let i = 0; i < n; i++) {
+      if(array[i] == key){
+        p5.fill(255, 0, 0);
       }
-      found = true;
+      else if(i >= lo && i <= hi) {
+        p5.fill(0, 255, 0);
+      } else{
+        p5.fill(255);
+      }
+      p5.stroke(0);
+      p5.rect(i * length, 0, length, breadth);
+      p5.fill(0);
+      p5.textSize((length + breadth) / 6);
+      p5.text(array[i], i * length + (6 * length) / 24, (15 * breadth) / 24);
     }
   };
 
   onBackButtonClick = () => {
-    array = [];
-    lo = 0;
-    hi = n - 1;
-    found = false;
+    this.cleaning();
     this.props.onBackButtonClick();
   };
 
   onClearButtonClick = () => {
-    array = [];
-    lo = 0;
-    hi = n - 1;
-    found = false;
+    this.cleaning();
     reLoad = true;
     this.setState({ key: null, stage: 0 });
   };
 
-  // mousePressed = (e) => {
-  //   let x = e.mouseX;
-  //   let y = e.mouseY;
-  //   let i = Math.floor(x / side);
-  //   let j = Math.floor(y / side);
-  //   if (!key && i >= 0 && i < n && j == 0) {
-  //     this.setState({ key: array[i], stage: 1 });
-  //   }
-  // };
+  cleaning = () => {
+    array = [];
+    lo = 0;
+    hi = n - 1;
+    found = false;
+  }
 
   onSearchButtonClick = () => {
     let n = document.getElementById("key").value;
@@ -142,6 +146,7 @@ class BinarySearch extends React.Component {
           setup={this.setup}
           draw={this.draw}
           mousePressed={this.mousePressed}
+          windowResized={this.windowResized}
         />
       </div>
     );
