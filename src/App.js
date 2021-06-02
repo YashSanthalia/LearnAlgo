@@ -6,6 +6,7 @@ import Sorting from "./sorting/Sorting";
 import LinearSearch from "./linearsearch/LinearSearch";
 import BinarySearch from "./binarysearch/BinarySearch";
 import TSP from "./tsp/TSP";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 class App extends React.Component {
   state = { option: 0 };
@@ -17,50 +18,50 @@ class App extends React.Component {
   render() {
     if (this.state.option === 0) {
       return (
-        <div>
-          <button
+        <div className="container mt-3">
+          <button className="btn btn-primary m-2"
             onClick={() => {
               this.setState({ option: 1 });
             }}
           >
             Dijkstra
           </button>
-          <button
+          <button className="btn btn-primary m-2"
             onClick={() => {
               this.setState({ option: 2 });
             }}
           >
             BackTracking
           </button>
-          <button
+          <button className="btn btn-primary m-2"
             onClick={() => {
               this.setState({ option: 3 });
             }}
           >
             A*
           </button>
-          <button
+          <button className="btn btn-primary m-2"
             onClick={() => {
               this.setState({ option: 4 });
             }}
           >
             Sorting
           </button>
-          <button
+          <button className="btn btn-primary m-2"
             onClick={() => {
               this.setState({ option: 5 });
             }}
           >
             LinearSearch
           </button>
-          <button
+          <button className="btn btn-primary m-2"
             onClick={() => {
               this.setState({ option: 6 });
             }}
           >
             BinarySearch
           </button>
-          <button
+          <button className="btn btn-primary m-2"
             onClick={() => {
               this.setState({ option: 7 });
             }}
