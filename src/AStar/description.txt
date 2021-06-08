@@ -1,0 +1,5 @@
+green color(139, 237, 151) - open set
+dark blue color(0, 0, 255) - path set
+light blue - (4, 228, 226) - closed set
+yellow (233, 222, 21) - start node
+red(228, 31, 4) - end node
