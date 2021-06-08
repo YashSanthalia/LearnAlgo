@@ -200,19 +200,21 @@ class Dijkstra extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="container mb-3">
         <NavBar
           stage={this.state.stage}
           algo="Dijkstra"
           onBackButtonClick={this.onBackButtonClick}
           onClearButtonClick={this.onClearButtonClick}
         />
+        <div className="container">
         <Sketch
           setup={this.setup}
           draw={this.draw}
           mousePressed={this.mousePressed}
           windowResized={this.windowResized}
         />
+        </div>
       </div>
     );
   }
