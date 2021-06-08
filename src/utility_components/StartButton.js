@@ -6,7 +6,7 @@ class StartButton extends React.Component {
   };
 
   render() {
-    return <button onClick={this.onStartButtonClick}>Start</button>;
+    return <button onClick={this.onStartButtonClick} className="btn btn-primary m-2">Start</button>;
   }
 }
 

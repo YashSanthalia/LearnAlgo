@@ -17,20 +17,20 @@ class NavBar extends React.Component {
     if (this.props.stage === 0) {
       return (
         <div>
+          <h2>{this.props.algo}</h2>
           <BackButton onBackButtonClick={this.onBackButtonClick}/>
           <ClearButton onClearButtonClick={this.onClearButtonClick}/>
           Click where you want to start from
-          <h2>{this.props.algo}</h2>
         </div>
       );
     }
     if (this.props.stage === 1) {
       return (
         <div>
+          <h2>{this.props.algo}</h2>
           <BackButton onBackButtonClick={this.onBackButtonClick}/>
           <ClearButton onClearButtonClick={this.onClearButtonClick}/>
           Click where you want to end
-          <h2>{this.props.algo}</h2>
         </div>
       );
     }
@@ -38,9 +38,9 @@ class NavBar extends React.Component {
     if (this.props.stage === 2) {
         return (
           <div>
+            <h2>{this.props.algo}</h2>
             <BackButton onBackButtonClick={this.onBackButtonClick}/>
             <ClearButton onClearButtonClick={this.onClearButtonClick}/>
-            <h2>{this.props.algo}</h2>
           </div>
         );
       }

@@ -6,7 +6,7 @@ class BackButton extends React.Component {
   };
 
   render() {
-    return <button onClick={this.onBackButtonClick}>Back</button>;
+    return <button onClick={this.onBackButtonClick} className="btn btn-primary m-2">Back</button>;
   }
 }
 
