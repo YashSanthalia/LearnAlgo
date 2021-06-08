@@ -9,8 +9,8 @@ import {
   showingPath,
 } from "../astar/Draw";
 
-let cols = 28,
-  rows = 14;
+let cols = 25,
+  rows = 11;
 let length, breadth;
 let grid = new Array(cols);
 let openSet = [];
@@ -59,7 +59,7 @@ class Dijkstra extends React.Component {
 
   initializeCanvas = (p5) => {
     let x = (p5.windowWidth - p5.width) / 2;
-    let y = (p5.windowHeight - p5.height) / 2;
+    let y = (p5.windowHeight - p5.height) * 0.9;
     xyz.position(x, y);
     length = p5.width / cols;
     breadth = p5.height / rows;

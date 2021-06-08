@@ -30,14 +30,14 @@ class TSP extends React.Component {
   };
 
   setup = (p5, parent) => {
-    xyz = p5.createCanvas(p5.windowWidth*0.78, p5.windowHeight * 0.85).parent(parent);
+    xyz = p5.createCanvas(p5.windowWidth*0.95, p5.windowHeight * 0.78).parent(parent);
     this.initializeCanvas(p5);
   };
 
   windowResized = (p5) => {
     let prevWidth = p5.width;
     let prevHeight = p5.height;
-    xyz = p5.createCanvas(p5.windowWidth*0.78, p5.windowHeight * 0.85);
+    xyz = p5.createCanvas(p5.windowWidth*0.95, p5.windowHeight * 0.78);
     this.initializeCanvas(p5);
     for(let i = 0 ; i < points.length ; i++){
       points[i].x = (p5.width * points[i].x) / prevWidth;
@@ -46,10 +46,10 @@ class TSP extends React.Component {
   }
 
   initializeCanvas = (p5) => {
-    width = p5.windowWidth*0.78;
-    height = p5.windowHeight * 0.85;
+    width = p5.windowWidth*0.95;
+    height = p5.windowHeight * 0.78;
     let x = (p5.windowWidth - p5.width) / 2;
-    let y = (p5.windowHeight - p5.height) / 2;
+    let y = (p5.windowHeight - p5.height) * 0.9;
     xyz.position(x, y);
   }
 

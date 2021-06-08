@@ -42,9 +42,11 @@ class AStar extends React.Component {
   };
 
   setup = (p5, parent) => {
-    xyz = p5.createCanvas(p5.windowWidth * 0.95, p5.windowHeight * 0.8).parent(parent);
+    xyz = p5
+      .createCanvas(p5.windowWidth * 0.95, p5.windowHeight * 0.8)
+      .parent(parent);
     this.initializeCanvas(p5);
-    p5.frameRate(5);
+    // p5.frameRate(5);
   };
 
   windowResized = (p5) => {
@@ -57,7 +59,7 @@ class AStar extends React.Component {
 
   initializeCanvas = (p5) => {
     let x = (p5.windowWidth - p5.width) / 2;
-    let y = (p5.windowHeight - p5.height) * 0.85;
+    let y = (p5.windowHeight - p5.height) * 0.9;
     xyz.position(x, y);
     length = p5.width / cols;
     breadth = p5.height / rows;
@@ -218,7 +220,6 @@ class AStar extends React.Component {
           mousePressed={this.mousePressed}
           windowResized={this.windowResized}
         />
-        <div>Yash is a good boy</div>
       </div>
     );
   }

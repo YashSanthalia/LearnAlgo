@@ -4,7 +4,7 @@ import Sketch from "react-p5";
 import NavBar from "./components/NavBar";
 
 let length, breadth;
-let rows = 14, cols = 30;
+let rows = 11, cols = 25;
 let grid = [];
 let current = null,
   next = null,
@@ -36,13 +36,13 @@ class BackTracking extends React.Component {
 
   setup = (p5, canvasParentRef) => {
     console.log(1);
-    xyz = p5.createCanvas(p5.windowWidth * 0.95, p5.windowHeight * 0.85).parent(canvasParentRef);
+    xyz = p5.createCanvas(p5.windowWidth * 0.95, p5.windowHeight * 0.8).parent(canvasParentRef);
     p5.frameRate();
     this.initializeCanvas(p5);
   };
 
   windowResized = (p5) => {
-    xyz = p5.createCanvas(p5.windowWidth * 0.85, p5.windowHeight * 0.85);
+    xyz = p5.createCanvas(p5.windowWidth * 0.95, p5.windowHeight * 0.8);
     this.initializeCanvas(p5);
     if(solution){
       flag = true;
@@ -51,7 +51,7 @@ class BackTracking extends React.Component {
 
   initializeCanvas = (p5) => {
     let x = (p5.windowWidth - p5.width) / 2;
-    let y = (p5.windowHeight - p5.height) / 2;
+    let y = (p5.windowHeight - p5.height) * 0.9;
     xyz.position(x, y);
     length = p5.width / cols;
     breadth = p5.height / rows;
