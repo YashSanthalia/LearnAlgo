@@ -145,6 +145,7 @@ class LinearSearch extends React.Component {
       <div className="container mb-3">
         <NavBar
           stage={this.state.stage}
+          algo="Linear Search"
           onBackButtonClick={this.onBackButtonClick}
           onClearButtonClick={this.onClearButtonClick}
           onSearchButtonClick = {this.onSearchButtonClick}

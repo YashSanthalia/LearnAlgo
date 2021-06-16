@@ -15,6 +15,7 @@ class NavBar extends React.Component {
     if (this.props.stage === 0) {
       return (
         <div>
+          <h2>BackTracking</h2>
           <BackButton onBackButtonClick={this.onBackButtonClick} />
           <ClearButton onClearButtonClick={this.onClearButtonClick} />
           Click from where you want to start
@@ -23,6 +24,7 @@ class NavBar extends React.Component {
     } else {
       return (
         <div>
+          <h2>BackTracking</h2>
           <BackButton onBackButtonClick={this.onBackButtonClick} />
           <ClearButton onClearButtonClick={this.onClearButtonClick} />
         </div>

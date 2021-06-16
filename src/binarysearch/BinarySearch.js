@@ -138,6 +138,7 @@ class BinarySearch extends React.Component {
       <div className="container">
         <NavBar
           stage={this.state.stage}
+          algo="Binary Search"
           onBackButtonClick={this.onBackButtonClick}
           onClearButtonClick={this.onClearButtonClick}
           onSearchButtonClick = {this.onSearchButtonClick}

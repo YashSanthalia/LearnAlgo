@@ -22,6 +22,7 @@ class NavBar extends React.Component {
     if (this.props.stage === 0) {
       return (
         <div className="mt-3">
+          <h2>{this.props.algo}</h2>
         <div className="row">
           <div className="col-md-8">
           <input id="key" className="form-control" placeholder="Enter the element you want to search"></input>
@@ -37,7 +38,8 @@ class NavBar extends React.Component {
     }
     if (this.props.stage === 1) {
       return (
-        <div>
+        <div className="mt-3">
+          <h2>{this.props.algo}</h2>
           <BackButton onBackButtonClick={this.onBackButtonClick}/>
           <ClearButton onClearButtonClick={this.onClearButtonClick}/>
         </div>
