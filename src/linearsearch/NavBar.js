@@ -21,12 +21,17 @@ class NavBar extends React.Component {
   render() {
     if (this.props.stage === 0) {
       return (
-        <div>
+        <div className="mt-3">
+        <div className="row">
+          <div className="col-md-8">
+          <input id="key" className="form-control" placeholder="Enter the element you want to search"></input>
+          <SearchButton onSearchButtonClick={this.onSearchButtonClick} />
+          </div>
+          <div className="col-md-4">
           <BackButton onBackButtonClick={this.onBackButtonClick}/>
           <ClearButton onClearButtonClick={this.onClearButtonClick}/>
-          <input id="key"></input>
-          <SearchButton onSearchButtonClick={this.onSearchButtonClick} />
-          Enter the element you want to search
+          </div>
+        </div>
         </div>
       );
     }

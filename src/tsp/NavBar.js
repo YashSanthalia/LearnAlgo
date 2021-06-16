@@ -17,10 +17,10 @@ class NavBar extends React.Component{
         if(this.props.stage === 0){
             return (
                 <div>
-                    Choose the points
+                   <span className="fs-5">Choose the points</span> 
+                    <StartButton onStartButtonClick={this.onStartButtonClick}/>
                     <BackButton onBackButtonClick={this.onBackButtonClick}/>
                     <ClearButton onClearButtonClick={this.onClearButtonClick}/>
-                    <StartButton onStartButtonClick={this.onStartButtonClick}/>
                 </div>
 
             );

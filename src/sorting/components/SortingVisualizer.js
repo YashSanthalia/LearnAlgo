@@ -13,7 +13,7 @@ class SortingVisualizer extends React.Component {
   
   render() {
     return (
-      <div>
+      <div className="container">
         <Menu
           array={this.props.array}
           onGenerateNewArray={this.generateNewArray}

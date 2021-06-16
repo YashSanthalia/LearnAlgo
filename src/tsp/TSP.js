@@ -164,7 +164,7 @@ class TSP extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="container mt-3">
         <NavBar
           stage={this.state.stage}
           onBackButtonClick={this.onBackButtonClick}

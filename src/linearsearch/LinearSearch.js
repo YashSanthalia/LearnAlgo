@@ -142,7 +142,7 @@ class LinearSearch extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="container mb-3">
         <NavBar
           stage={this.state.stage}
           onBackButtonClick={this.onBackButtonClick}
