@@ -18,9 +18,11 @@ class Menu extends React.Component{
         this.props.onGenerateNewArray();
       };
     
-      mergesort = () => {
+      mergesort = async () => {
+        document.getElementById("bs").disabled = true;
         const animations = getMergeSortAnimations(this.props.array);
-        animateMergeSort(animations);
+        await animateMergeSort(animations);
+        document.getElementById("bs").disabled = false;
       };
 
       bubblesort = () => {
@@ -53,7 +55,7 @@ class Menu extends React.Component{
               <button onClick={this.generateNewArray} className="btn btn-primary">Generate Array</button>
               <BackButton onBackButtonClick={this.onBackButtonClick}/>
             <button class="b btn btn-outline-secondary" onClick={this.mergesort}>MergeSort</button>
-            <button class="c btn btn-outline-success" onClick={this.bubblesort}>BubbleSort</button>
+            <button class="c btn btn-outline-success" id="bs" onClick={this.bubblesort}>BubbleSort</button>
             <button class="d btn btn-outline-warning" onClick={this.selectionsort}>SelectionSort</button>
             <button class="e btn btn-outline-danger" onClick={this.insertionsort}>InsertionSort</button>
             <button class="f btn btn-outline-info" onClick={this.quicksort}>QuickSort</button>
