@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/LearnAlgo/static/css/main.a028114a.chunk.css",
+    "main.js": "/LearnAlgo/static/js/main.c82e8393.chunk.js",
+    "main.js.map": "/LearnAlgo/static/js/main.c82e8393.chunk.js.map",
+    "runtime-main.js": "/LearnAlgo/static/js/runtime-main.5f01e931.js",
+    "runtime-main.js.map": "/LearnAlgo/static/js/runtime-main.5f01e931.js.map",
+    "static/css/2.61b4cb56.chunk.css": "/LearnAlgo/static/css/2.61b4cb56.chunk.css",
+    "static/js/2.1e6ae069.chunk.js": "/LearnAlgo/static/js/2.1e6ae069.chunk.js",
+    "static/js/2.1e6ae069.chunk.js.map": "/LearnAlgo/static/js/2.1e6ae069.chunk.js.map",
+    "index.html": "/LearnAlgo/index.html",
+    "static/css/2.61b4cb56.chunk.css.map": "/LearnAlgo/static/css/2.61b4cb56.chunk.css.map",
+    "static/css/main.a028114a.chunk.css.map": "/LearnAlgo/static/css/main.a028114a.chunk.css.map",
+    "static/js/2.1e6ae069.chunk.js.LICENSE.txt": "/LearnAlgo/static/js/2.1e6ae069.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.5f01e931.js",
+    "static/css/2.61b4cb56.chunk.css",
+    "static/js/2.1e6ae069.chunk.js",
+    "static/css/main.a028114a.chunk.css",
+    "static/js/main.c82e8393.chunk.js"
+  ]
+}
