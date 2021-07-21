@@ -19,46 +19,62 @@ class Menu extends React.Component{
       };
     
       mergesort = async () => {
-        document.getElementById("bs").disabled = true;
+        this.disablingButtons();
         const animations = getMergeSortAnimations(this.props.array);
-        await animateMergeSort(animations);
-        document.getElementById("bs").disabled = false;
+        animateMergeSort(animations);
       };
 
       bubblesort = () => {
+        this.disablingButtons();
         const animations = getBubbleSortAnimations(this.props.array);
         animateBubbleSort(animations);
       };
-    
+     
       selectionsort = () => {
+        this.disablingButtons();
         const animations = getSelectionSortAnimations(this.props.array);
         animateSelectionSort(animations);
       };
     
       insertionsort = () => {
+        this.disablingButtons();
         const animations = getInsertionSortAnimations(this.props.array);
         animateInsertionSort(animations);
       };
     
       quicksort = () => {
+        this.disablingButtons();
         const animations = getQuickSortAnimations(this.props.array);
         animateQuickSort(animations);
       };
 
       onBackButtonClick = () => {
-        this.props.onBackButtonClick();
+          this.props.onBackButtonClick();
+      }
+
+      onClearButtonClick = () => {
+        document.getElementById("bs").disabled = false;
+      }
+
+      disablingButtons = () => {
+        document.getElementById("ms").disabled = true;
+        document.getElementById("bs").disabled = true;
+        document.getElementById("ss").disabled = true;
+        document.getElementById("is").disabled = true;
+        document.getElementById("qs").disabled = true;
+        document.getElementById("gnw").disabled = true;
       }
       
     render(){
         return (
           <div className="container mt-3">
-              <button onClick={this.generateNewArray} className="btn btn-primary">Generate Array</button>
-              <BackButton onBackButtonClick={this.onBackButtonClick}/>
-            <button class="b btn btn-outline-secondary" onClick={this.mergesort}>MergeSort</button>
+            <button onClick={this.generateNewArray} className="btn btn-primary" id="gnw">Generate Array</button>
+            <BackButton onBackButtonClick={this.onBackButtonClick}/>
+            <button class="b btn btn-outline-secondary" id="ms" onClick={this.mergesort}>MergeSort</button>
             <button class="c btn btn-outline-success" id="bs" onClick={this.bubblesort}>BubbleSort</button>
-            <button class="d btn btn-outline-warning" onClick={this.selectionsort}>SelectionSort</button>
-            <button class="e btn btn-outline-danger" onClick={this.insertionsort}>InsertionSort</button>
-            <button class="f btn btn-outline-info" onClick={this.quicksort}>QuickSort</button>
+            <button class="d btn btn-outline-warning" id="ss" onClick={this.selectionsort}>SelectionSort</button>
+            <button class="e btn btn-outline-danger" id="is" onClick={this.insertionsort}>InsertionSort</button>
+            <button class="f btn btn-outline-info" id="qs" onClick={this.quicksort}>QuickSort</button>
           </div>
         );
     }

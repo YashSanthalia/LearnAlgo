@@ -4,7 +4,7 @@ const SECONDARY_COLOR = "red";
 
 export function animateMergeSort(animations) {
   const arrayBars = document.getElementsByClassName("array-bar");
-  for (let i = 0; i < animations.length; i++) {
+  for ( let i = 0 ; i < animations.length; i++) {
     const isColorChange = i % 3 !== 2;
     if (isColorChange) {
       const [barOneIdx, barTwoIdx] = animations[i];

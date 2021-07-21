@@ -31,7 +31,7 @@ class App extends React.Component {
               this.setState({ option: 2 });
             }}
           >
-            BackTracking
+            Back Tracking
           </button>
           <button className="btn btn-primary m-2"
             onClick={() => {
@@ -52,21 +52,21 @@ class App extends React.Component {
               this.setState({ option: 5 });
             }}
           >
-            LinearSearch
+            Linear Search
           </button>
           <button className="btn btn-primary m-2"
             onClick={() => {
               this.setState({ option: 6 });
             }}
           >
-            BinarySearch
+            Binary Search
           </button>
           <button className="btn btn-primary m-2"
             onClick={() => {
               this.setState({ option: 7 });
             }}
           >
-            TSP
+            Minimum Spanning Tree
           </button>
         </div>
       );

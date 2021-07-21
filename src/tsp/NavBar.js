@@ -17,7 +17,7 @@ class NavBar extends React.Component{
         if(this.props.stage === 0){
             return (
                 <div>
-                    <h2>TSP</h2>
+                    <h2>MST - Minimum Spanning Tree</h2>
                    <span className="fs-5">Choose the points</span> 
                     <StartButton onStartButtonClick={this.onStartButtonClick}/>
                     <BackButton onBackButtonClick={this.onBackButtonClick}/>
@@ -29,7 +29,7 @@ class NavBar extends React.Component{
         else if(this.props.stage === 1){
             return (
                 <div>
-                    <h2>TSP</h2>
+                    <h2>MST - Minimum Spanning Tree</h2>
                     <BackButton onBackButtonClick={this.onBackButtonClick}/>
                     <ClearButton onClearButtonClick={this.onClearButtonClick}/>
                 </div>
