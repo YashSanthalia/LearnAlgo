@@ -46,7 +46,7 @@ class AStar extends React.Component {
       .createCanvas(p5.windowWidth * 0.95, p5.windowHeight * 0.8)
       .parent(parent);
     this.initializeCanvas(p5);
-    // p5.frameRate(5);
+    p5.frameRate(5);
   };
 
   windowResized = (p5) => {
@@ -181,7 +181,6 @@ class AStar extends React.Component {
   cleaning = () => {
     openSet = [];
     closedSet = [];
-    noSolution = false;
     path = [];
     current = null;
     reLoad = false;

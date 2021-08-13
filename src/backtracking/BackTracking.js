@@ -35,9 +35,8 @@ class BackTracking extends React.Component {
   }
 
   setup = (p5, canvasParentRef) => {
-    console.log(1);
     xyz = p5.createCanvas(p5.windowWidth * 0.95, p5.windowHeight * 0.8).parent(canvasParentRef);
-    p5.frameRate();
+    p5.frameRate(15);
     this.initializeCanvas(p5);
   };
 
@@ -60,7 +59,7 @@ class BackTracking extends React.Component {
   initializeGrid = () => {
     for (let j = 0; j < rows; j++) {
       for (let i = 0; i < cols; i++) {
-        let cell = new Cell(i, j, rows, cols);
+        let cell = new Cell(i, j);
         grid.push(cell);
       }
     }

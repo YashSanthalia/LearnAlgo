@@ -46,7 +46,7 @@ class Dijkstra extends React.Component {
       .createCanvas(p5.windowWidth * 0.95, p5.windowHeight * 0.8)
       .parent(parent);
     this.initializeCanvas(p5);
-    // p5.frameRate(5);
+    p5.frameRate(7);
   };
 
   windowResized = (p5) => {
@@ -85,6 +85,7 @@ class Dijkstra extends React.Component {
   };
 
   draw = (p5) => {
+    console.log("draw");
     if(flag === true){
       showingCompleteGrid(p5, grid, length, breadth, rows, cols, start, end);
       showingOpenSet(p5, openSet, length, breadth, start, end);
@@ -180,7 +181,6 @@ class Dijkstra extends React.Component {
   cleaning = () => {
     openSet = [];
     closedSet = [];
-    noSolution = false;
     path = [];
     current = null;
     reLoad = false;

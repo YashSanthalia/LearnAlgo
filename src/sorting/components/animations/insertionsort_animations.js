@@ -1,4 +1,4 @@
-const ANIMATION_SPEED_MS = 10;
+const ANIMATION_SPEED_MS = 2;
 const PRIMARY_COLOR = 'turquoise';
 const SECONDARY_COLOR = 'red';
 
